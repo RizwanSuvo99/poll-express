@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Poll Form</title>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- JS Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding: 40px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-6 mx-auto">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Create A New Poll</h4>
+
+            <!-- ✅ Use proper method and action -->
+            <form id="pollForm" action="/create" method="POST">
+              <!-- Title -->
+              <div class="mb-3">
+                <label for="title" class="form-label">Enter Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="title"
+                  placeholder="Poll title"
+                  required
+                />
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label for="description" class="form-label"
+                  >Enter Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  rows="3"
+                  placeholder="Poll description"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Poll Options -->
+              <div class="mb-3">
+                <label class="form-label">Enter Your Options</label>
+                <div id="optionsContainer">
+                  <input
+                    type="text"
+                    class="form-control mb-2"
+                    placeholder="Option 1"
+                    name="options[]"
+                    required
+                  />
+                  <input
+                    type="text"
+                    class="form-control mb-2"
+                    placeholder="Option 2"
+                    name="options[]"
+                    required
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-secondary btn-sm"
+                  onclick="addOptionField()"
+                >
+                  Add More Option
+                </button>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary">Create Poll</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript for dynamic options -->
+    <script>
+      function addOptionField() {
+        const container = document.getElementById('optionsContainer');
+        const currentOptions = container.querySelectorAll('input').length;
+        const newOptionNumber = currentOptions + 1;
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'form-control mb-2';
+        input.placeholder = `Option ${newOptionNumber}`;
+        input.name = 'options[]';
+        input.required = true;
+
+        container.appendChild(input);
+      }
+    </script>
+  </body>
+</html>
