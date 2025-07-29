@@ -27,3 +27,8 @@ export const createPollPostController = async (req, res, next) => {
     console.log(error);
   }
 };
+
+export const getAllPolls = async (req, res, next) => {
+  const polls = await Poll.find();
+  res.render('polls', { polls });
+};

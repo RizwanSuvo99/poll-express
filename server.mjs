@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import {
   createPollGetController,
   createPollPostController,
+  getAllPolls,
 } from './pollController.mjs';
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.get('/create', createPollGetController);
 app.post('/create', createPollPostController);
+app.get('/polls', getAllPolls);
 
 app.get('/', (req, res) => {
   res.render('home');
