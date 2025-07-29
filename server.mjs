@@ -5,6 +5,8 @@ import {
   createPollGetController,
   createPollPostController,
   getAllPolls,
+  viewPollGetController,
+  viewPollPostController,
 } from './pollController.mjs';
 
 const app = express();
@@ -19,6 +21,8 @@ app.use(express.json());
 app.get('/create', createPollGetController);
 app.post('/create', createPollPostController);
 app.get('/polls', getAllPolls);
+app.get('/polls/:id', viewPollGetController);
+app.post('/polls/:id/vote', viewPollPostController);
 
 app.get('/', (req, res) => {
   res.render('home');

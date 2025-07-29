@@ -29,20 +29,6 @@
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title"><%= poll.title %></h5>
-              <p class="card-text text-muted"><%= poll.description %></p>
-
-              <% if (poll.options && poll.options.length > 0) { %>
-              <ul class="list-group mb-3">
-                <% poll.options.forEach(function(option, index) { %>
-                <li class="list-group-item">
-                  Option <%= index + 1 %>: <%= option %>
-                </li>
-                <% }) %>
-              </ul>
-              <% } else { %>
-              <p class="text-warning">No options available.</p>
-              <% } %>
-
               <!-- Example button to go to poll voting -->
               <a href="/polls/<%= poll._id %>" class="btn btn-primary btn-sm"
                 >Vote Now</a
