@@ -16,11 +16,13 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
     ></script>
-    
   </head>
   <body class="bg-light">
     <div class="container mt-5">
-      <h2 class="mb-4">Available Polls</h2>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Available Polls</h2>
+        <a href="/create" class="btn btn-success">+ Create Poll</a>
+      </div>
 
       <% if (polls && polls.length > 0) { %>
       <div class="row">
@@ -29,10 +31,7 @@
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title"><%= poll.title %></h5>
-              <!-- Example button to go to poll voting -->
-              <a href="/polls/<%= poll._id %>" class="btn btn-primary btn-sm"
-                >Vote Now</a
-              >
+              <a href="/polls/<%= poll._id %>" class="btn btn-primary btn-sm">Vote Now</a>
             </div>
           </div>
         </div>
